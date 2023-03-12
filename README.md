@@ -1,2 +1,2 @@
 # Breakout_unity
-Remaking my breakout game in unity using C#
+Remaking my breakout game using Unity
