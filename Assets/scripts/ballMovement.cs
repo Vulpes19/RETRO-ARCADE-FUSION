@@ -32,6 +32,7 @@ public class ballMovement : MonoBehaviour
                 Vector3Int brickPosition = tilemap.WorldToCell(hitPosition);
                 if (tilemap.HasTile(brickPosition))
                 {
+                    ScoreManager.instance.updateScore();
                     tilemap.SetTile(brickPosition, null);
                     direction.y *= -1;
                 }
