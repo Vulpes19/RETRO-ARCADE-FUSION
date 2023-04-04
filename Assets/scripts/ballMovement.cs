@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class ballMovement : MonoBehaviour
 {
@@ -20,6 +21,23 @@ public class ballMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Tilemap tilemap = collision.gameObject.GetComponent<Tilemap>();
+        if ( tilemap )
+        {
+            Vector3 hitPosition = Vector3.zero;
+            foreach ( ContactPoint2D contact in collision.contacts )
+            {
+                hitPosition.x = contact.point.x - 0.01f * contact.normal.x;
+                hitPosition.y = contact.point.y - 0.01f * contact.normal.y;
+                Vector3Int brickPosition = tilemap.WorldToCell(hitPosition);
+                if (tilemap.HasTile(brickPosition))
+                {
+                    tilemap.SetTile(brickPosition, null);
+                    direction.y *= -1;
+                }
+                       
+            }
+        }
         if ( collision.gameObject.CompareTag("paddle") || collision.gameObject.CompareTag("topWall") )
         {
             direction.y *= -1;
