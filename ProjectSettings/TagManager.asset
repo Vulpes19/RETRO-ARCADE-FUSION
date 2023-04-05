@@ -9,6 +9,7 @@ TagManager:
   - sideWalls
   - topWall
   - brick
+  - Ball
   layers:
   - Default
   - TransparentFX

@@ -34,6 +34,16 @@ public class ballMovement : MonoBehaviour
                 {
                     ScoreManager.instance.updateScore();
                     tilemap.SetTile(brickPosition, null);
+                    ball.velocity = Vector2.zero;
+                    float difference = contact.point.x - hitPosition.x;
+                    if ( contact.point.x > hitPosition.x )
+                    {
+                        ball.AddForce(new Vector2((Mathf.Abs(difference * 200)), speed));
+                    }
+                    else
+                    {
+                        ball.AddForce(new Vector2(-(Mathf.Abs(difference * 200)), speed));
+                    }
                     direction.y *= -1;
                 }
                        
@@ -46,9 +56,6 @@ public class ballMovement : MonoBehaviour
         else if ( collision.gameObject.CompareTag("sideWalls") )
         {
             direction.x *= -1;
-            //ContactPoint2D contact = collision.contacts[0];
-            //Vector2 normal = contact.normal;
-            //ball.velocity = Vector2.Reflect(ball.velocity, normal);
         }
     }
 }
