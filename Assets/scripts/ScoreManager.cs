@@ -21,6 +21,7 @@ public class ScoreManager : MonoBehaviour
 
     void Start()
     {
+        highScore = PlayerPrefs.GetInt("HighScore");
         scoreText.SetText( "Score: " + score.ToString() );
         highScoreText.SetText( "High Score: " + highScore.ToString() );
     }
@@ -33,6 +34,7 @@ public class ScoreManager : MonoBehaviour
         {
             highScore = score;
             highScoreText.SetText( "High Score: " + highScore.ToString() );
+            PlayerPrefs.SetInt("HighScore", highScore);
         }
     }
 }
