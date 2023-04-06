@@ -29,5 +29,10 @@ public class ScoreManager : MonoBehaviour
     {
         score += 1;
         scoreText.SetText("Score: " + score.ToString());
+        if (score > highScore)
+        {
+            highScore = score;
+            highScoreText.SetText( "High Score: " + highScore.ToString() );
+        }
     }
 }

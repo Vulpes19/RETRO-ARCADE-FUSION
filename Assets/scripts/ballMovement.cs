@@ -34,17 +34,25 @@ public class ballMovement : MonoBehaviour
                 {
                     ScoreManager.instance.updateScore();
                     tilemap.SetTile(brickPosition, null);
-                    ball.velocity = Vector2.zero;
+                    float dotProduct = Vector2.Dot(contact.normal, Vector2.right);
+                    if (dotProduct > 0f)
+                        direction.x = Mathf.Abs(direction.x);
+                    else if (dotProduct < 0f)
+                        direction.x = -Mathf.Abs(direction.x);
+                    else
+                        direction.y *= -1;
+                    /*ball.velocity = Vector2.zero;
                     float difference = contact.point.x - hitPosition.x;
                     if ( contact.point.x > hitPosition.x )
                     {
                         ball.AddForce(new Vector2((Mathf.Abs(difference * 200)), speed));
+                        Debug.Log("here 1");
                     }
                     else
                     {
                         ball.AddForce(new Vector2(-(Mathf.Abs(difference * 200)), speed));
-                    }
-                    direction.y *= -1;
+                        Debug.Log("here 2");
+                    }*/
                 }
                        
             }
