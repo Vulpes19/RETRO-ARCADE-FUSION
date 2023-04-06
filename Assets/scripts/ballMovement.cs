@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class ballMovement : MonoBehaviour
+public class BallMovement : MonoBehaviour
 {
     public float speed = 4f;
     private Rigidbody2D ball;
