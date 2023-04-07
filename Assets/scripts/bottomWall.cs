@@ -13,8 +13,8 @@ public class bottomWall : MonoBehaviour
             Rigidbody2D ball = collision.gameObject.GetComponent<Rigidbody2D>();
             LivesManager.instance.loseLife();
             ball.velocity = Vector2.zero;
-            ball.transform.position = Vector2.zero;
-            ball.position = new Vector2(0.04f, -3.56f);
+            //ball.transform.position = Vector2.zero;
+            ball.transform.position = new Vector2(0.04f, -1f);
            // ball.velocity = new Vector2(Random.Range(-1f, 1f), 1).normalized * 4f;
             //ball.velocity = new Vector2(0.04f, -3.56f);
         }
