@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
         paddle.velocity = new Vector2( horizontalInput * speed, paddle.velocity.y );
     }
 
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Wall"))
