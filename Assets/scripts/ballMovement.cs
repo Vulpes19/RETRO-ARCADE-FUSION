@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.SceneManagement;
 
 public class BallMovement : MonoBehaviour
 {
@@ -21,18 +22,25 @@ public class BallMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Tilemap tilemap = collision.gameObject.GetComponent<Tilemap>();
-        if ( tilemap )
+        GameObject tilemapObject = GameObject.Find("bricks");
+        Tilemap tilemap = tilemapObject.GetComponent<Tilemap>();
+        if (tilemap)
         {
+            //Debug.Log("hello");
             Vector3 hitPosition = Vector3.zero;
-            foreach ( ContactPoint2D contact in collision.contacts )
+            foreach (ContactPoint2D contact in collision.contacts)
             {
                 hitPosition.x = contact.point.x - 0.01f * contact.normal.x;
                 hitPosition.y = contact.point.y - 0.01f * contact.normal.y;
                 Vector3Int brickPosition = tilemap.WorldToCell(hitPosition);
-                if (tilemap.HasTile(brickPosition))
+                bool b = tilemap.HasTile(brickPosition);
+                if (b)
                 {
-                    ScoreManager.instance.updateScore();
+                    Scene activeScene = SceneManager.GetActiveScene();
+                    if (activeScene.name != "MainMenu")
+                    {
+                        ScoreManager.instance.updateScore();
+                    }
                     tilemap.SetTile(brickPosition, null);
                     float dotProduct = Vector2.Dot(contact.normal, Vector2.right);
                     if (dotProduct > 0f)
@@ -42,14 +50,15 @@ public class BallMovement : MonoBehaviour
                     else
                         direction.y *= -1;
                 }
-                       
+                //Debug.Log(b.ToString());
+
             }
         }
-        if ( collision.gameObject.CompareTag("paddle") || collision.gameObject.CompareTag("topWall") )
+        if (collision.gameObject.CompareTag("paddle") || collision.gameObject.CompareTag("topWall"))
         {
             direction.y *= -1;
         }
-        else if ( collision.gameObject.CompareTag("sideWalls") )
+        else if (collision.gameObject.CompareTag("sideWalls"))
         {
             direction.x *= -1;
         }

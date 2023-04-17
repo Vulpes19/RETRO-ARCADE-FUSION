@@ -1099,7 +1099,7 @@ GameObject:
   - component: {fileID: 1439038580}
   - component: {fileID: 1439038582}
   m_Layer: 0
-  m_Name: Tilemap
+  m_Name: bricks
   m_TagString: brick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
