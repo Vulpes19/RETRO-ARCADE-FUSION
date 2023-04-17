@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class LivesManager : MonoBehaviour
 {
@@ -17,13 +18,15 @@ public class LivesManager : MonoBehaviour
     }
     void Start()
     {
-        livesText.SetText(lives.ToString());
+        livesText.SetText("Lives: " + lives.ToString());
     }
 
 
     public void loseLife()
     {
         lives -= 1;
-        livesText.SetText(lives.ToString());
+        if (lives >= 0)
+            SceneManager.LoadScene("GameOver");
+        livesText.SetText("Lives: " + lives.ToString());
     }
 }
