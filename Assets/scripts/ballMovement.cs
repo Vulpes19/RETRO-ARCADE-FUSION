@@ -26,15 +26,13 @@ public class BallMovement : MonoBehaviour
         Tilemap tilemap = tilemapObject.GetComponent<Tilemap>();
         if (tilemap)
         {
-            //Debug.Log("hello");
             Vector3 hitPosition = Vector3.zero;
             foreach (ContactPoint2D contact in collision.contacts)
             {
                 hitPosition.x = contact.point.x - 0.01f * contact.normal.x;
                 hitPosition.y = contact.point.y - 0.01f * contact.normal.y;
                 Vector3Int brickPosition = tilemap.WorldToCell(hitPosition);
-                bool b = tilemap.HasTile(brickPosition);
-                if (b)
+                if (tilemap.HasTile(brickPosition))
                 {
                     Scene activeScene = SceneManager.GetActiveScene();
                     if (activeScene.name != "MainMenu")
@@ -50,7 +48,6 @@ public class BallMovement : MonoBehaviour
                     else
                         direction.y *= -1;
                 }
-                //Debug.Log(b.ToString());
 
             }
         }

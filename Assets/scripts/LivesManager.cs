@@ -25,7 +25,7 @@ public class LivesManager : MonoBehaviour
     public void loseLife()
     {
         lives -= 1;
-        if (lives >= 0)
+        if (lives <= 0)
             SceneManager.LoadScene("GameOver");
         livesText.SetText("Lives: " + lives.ToString());
     }
