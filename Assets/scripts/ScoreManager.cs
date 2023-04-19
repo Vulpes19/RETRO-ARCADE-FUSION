@@ -27,9 +27,16 @@ public class ScoreManager : MonoBehaviour
         highScoreText.SetText( "High Score: " + highScore.ToString() );
     }
 
-    public void    updateScore()
+    public void    updateScore(string brick)
     {
-        score += 1;
+        if (brick == "one")
+            score += 1;
+        else if (brick == "three")
+            score += 3;
+        else if (brick == "five")
+            score += 5;
+        else if (brick == "seven")
+            score += 7;
         scoreText.SetText("Score: " + score.ToString());
         if (score > highScore)
         {

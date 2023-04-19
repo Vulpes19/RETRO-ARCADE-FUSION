@@ -34,10 +34,22 @@ public class BallMovement : MonoBehaviour
                 Vector3Int brickPosition = tilemap.WorldToCell(hitPosition);
                 if (tilemap.HasTile(brickPosition))
                 {
+                    hitPosition.y += 1;
+                    Debug.Log("y: " + hitPosition.y.ToString());
                     Scene activeScene = SceneManager.GetActiveScene();
                     if (activeScene.name != "MainMenu")
                     {
-                        ScoreManager.instance.updateScore();
+                        string brick = "one";
+                        if (hitPosition.y >= 2 && hitPosition.y < 3)
+                            brick = "three";
+                        else if (hitPosition.y >= 3 && hitPosition.y < 4)
+                            brick = "five";
+                        else if (hitPosition.y >= 4)
+                        {
+                            brick = "seven";
+                            speed = 6f;
+                        }
+                        ScoreManager.instance.updateScore(brick);
                     }
                     tilemap.SetTile(brickPosition, null);
                     float dotProduct = Vector2.Dot(contact.normal, Vector2.right);
