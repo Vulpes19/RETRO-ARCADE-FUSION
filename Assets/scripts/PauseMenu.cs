@@ -7,9 +7,6 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject menu;
-    public GameObject exitButton;
-    public GameObject retryButton;
-    public GameObject settingsButton;
     public bool isPaused;
     
     void Start()
@@ -32,9 +29,6 @@ public class PauseMenu : MonoBehaviour
     {
         isPaused = false;
         menu.SetActive(false);
-        exitButton.SetActive(false);
-        retryButton.SetActive(false);
-        settingsButton.SetActive(false);
         Time.timeScale = 1.0f;
     }
 
@@ -42,24 +36,18 @@ public class PauseMenu : MonoBehaviour
     {
         isPaused = true;
         menu.SetActive(true);
-        exitButton.SetActive(true);
-        retryButton.SetActive(true);
-        settingsButton.SetActive(true);
-        Button b1 = exitButton.GetComponent<Button>();
-        Button b2 = retryButton.GetComponent<Button>();
-        Button b3 = settingsButton.GetComponent<Button>();
-        b1.onClick.AddListener(quitGame);
-        b2.onClick.AddListener(retryGame);
         Time.timeScale = 0.0f;
     }
 
     public void retryGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        ResumeGame();
     }
 
     public void quitGame()
     {
-        Application.Quit();
+        SceneManager.LoadScene("MainMenu");
+        ResumeGame();
     }
 }
