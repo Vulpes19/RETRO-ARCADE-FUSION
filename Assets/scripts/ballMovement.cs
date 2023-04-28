@@ -8,6 +8,8 @@ public class BallMovement : MonoBehaviour
 {
     public float speed = 4f;
     private Rigidbody2D ball;
+    private GameObject paddleObject;
+    private Rigidbody2D paddle;
     Vector2 direction;
     void Start()
     {
@@ -47,6 +49,9 @@ public class BallMovement : MonoBehaviour
                         else if (hitPosition.y >= 4)
                         {
                             brick = "seven";
+                            paddleObject = GameObject.FindGameObjectWithTag("paddle");
+                            paddle = paddleObject.GetComponent<Rigidbody2D>();
+                            paddle.transform.localScale = new Vector3(paddle.transform.localScale.x / 2f, paddle.transform.localScale.y, paddle.transform.localScale.z);
                             speed = 6f;
                         }
                         ScoreManager.instance.updateScore(brick);

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
-        paddle.velocity = new Vector2( horizontalInput * speed, paddle.velocity.y );
+        paddle.velocity = new Vector2(horizontalInput * speed, paddle.velocity.y);
     }
 
     private void Update()
