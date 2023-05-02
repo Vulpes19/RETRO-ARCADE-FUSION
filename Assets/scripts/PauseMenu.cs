@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PauseMenu : MonoBehaviour
 {
     public GameObject menu;
-    public bool isPaused;
+    public bool isPaused = false;
     private int timer = 3;
     private IEnumerator coroutine;
-    
+    public TextMeshProUGUI countdown;
+
     void Start()
     {
+        countdown.gameObject.SetActive(false);
         menu.SetActive(false);
     }
 
@@ -29,15 +32,27 @@ public class PauseMenu : MonoBehaviour
 
     IEnumerator ResumeGame()
     {
+        timer = 3;
+        countdown.gameObject.SetActive(true);
+        GameObject icon1 = GameObject.Find("exit");
+        GameObject icon2 = GameObject.Find("settings");
+        GameObject icon3 = GameObject.Find("retry");
+        icon1.SetActive(false);
+        icon2.SetActive(false);
+        icon3.SetActive(false);
         while (timer > 0)
         {
-            Debug.Log(timer.ToString());
+            countdown.SetText(timer.ToString());
             yield return new WaitForSecondsRealtime(1);
             timer--;
         }
+        countdown.gameObject.SetActive(false);
         isPaused = false;
         menu.SetActive(false);
         Time.timeScale = 1.0f;
+        icon1.SetActive(true);
+        icon2.SetActive(true);
+        icon3.SetActive(true);
     }
 
     void PauseGame()
@@ -50,12 +65,19 @@ public class PauseMenu : MonoBehaviour
     void retryGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        StartCoroutine(ResumeGame());
+        isPaused = false;
+        menu.SetActive(false);
+        countdown.gameObject.SetActive(false);
+        Time.timeScale = 1.0f;
+        //StartCoroutine(ResumeGame());
     }
 
     void quitGame()
     {
         SceneManager.LoadScene("MainMenu");
-        StartCoroutine(ResumeGame());
+        isPaused = false;
+        menu.SetActive(false);
+        countdown.gameObject.SetActive(false);
+        Time.timeScale = 1.0f;
     }
 }

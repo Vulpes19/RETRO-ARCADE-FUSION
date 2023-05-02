@@ -21,9 +21,12 @@ public class BallMovement : MonoBehaviour
             angle = (angle < 0) ? -35f : 35f;
         direction = Quaternion.Euler(0, 0, angle) * Vector2.right;
         paddleObject = GameObject.FindGameObjectWithTag("paddle");
-        paddle = paddleObject.GetComponent<Rigidbody2D>();
-        paddleScale = paddle.transform.localScale;
-        //direction = Vector2.one.normalized;
+        if (paddleObject)
+        {
+            paddle = paddleObject.GetComponent<Rigidbody2D>();
+            paddleScale = paddle.transform.localScale;
+        }
+            //direction = Vector2.one.normalized;
     }
 
     private void FixedUpdate()
@@ -46,7 +49,6 @@ public class BallMovement : MonoBehaviour
                 if (tilemap.HasTile(brickPosition))
                 {
                     hitPosition.y += 1;
-                    Debug.Log("y: " + hitPosition.y.ToString());
                     Scene activeScene = SceneManager.GetActiveScene();
                     if (activeScene.name != "MainMenu")
                     {
@@ -59,9 +61,12 @@ public class BallMovement : MonoBehaviour
                         {
                             brick = "seven";
                             paddleObject = GameObject.FindGameObjectWithTag("paddle");
-                            paddle = paddleObject.GetComponent<Rigidbody2D>();
-                            if (paddle.transform.localScale != paddleScale)
-                                paddle.transform.localScale = new Vector3(paddle.transform.localScale.x / 2f, paddle.transform.localScale.y, paddle.transform.localScale.z);
+                            if (paddleObject)
+                            {
+                                paddle = paddleObject.GetComponent<Rigidbody2D>();
+                                if (paddle.transform.localScale != paddleScale)
+                                    paddle.transform.localScale = new Vector3(paddle.transform.localScale.x / 2f, paddle.transform.localScale.y, paddle.transform.localScale.z);
+                            }
                             speed = 6f;
                         }
                         ScoreManager.instance.updateScore(brick);
