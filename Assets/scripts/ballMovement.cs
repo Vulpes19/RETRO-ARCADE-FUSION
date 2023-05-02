@@ -10,11 +10,20 @@ public class BallMovement : MonoBehaviour
     private Rigidbody2D ball;
     private GameObject paddleObject;
     private Rigidbody2D paddle;
+    private float maxRotation = 50f;
+    private Vector3 paddleScale;
     Vector2 direction;
     void Start()
     {
         ball = GetComponent<Rigidbody2D>();
-        direction = Vector2.one.normalized;
+        float angle = Random.Range(-maxRotation, maxRotation);
+        if (angle >= -30f && angle <= 30f)
+            angle = (angle < 0) ? -35f : 35f;
+        direction = Quaternion.Euler(0, 0, angle) * Vector2.right;
+        paddleObject = GameObject.FindGameObjectWithTag("paddle");
+        paddle = paddleObject.GetComponent<Rigidbody2D>();
+        paddleScale = paddle.transform.localScale;
+        //direction = Vector2.one.normalized;
     }
 
     private void FixedUpdate()
@@ -51,7 +60,8 @@ public class BallMovement : MonoBehaviour
                             brick = "seven";
                             paddleObject = GameObject.FindGameObjectWithTag("paddle");
                             paddle = paddleObject.GetComponent<Rigidbody2D>();
-                            paddle.transform.localScale = new Vector3(paddle.transform.localScale.x / 2f, paddle.transform.localScale.y, paddle.transform.localScale.z);
+                            if (paddle.transform.localScale != paddleScale)
+                                paddle.transform.localScale = new Vector3(paddle.transform.localScale.x / 2f, paddle.transform.localScale.y, paddle.transform.localScale.z);
                             speed = 6f;
                         }
                         ScoreManager.instance.updateScore(brick);
