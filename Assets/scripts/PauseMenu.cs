@@ -8,6 +8,8 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject menu;
     public bool isPaused;
+    private int timer = 3;
+    private IEnumerator coroutine;
     
     void Start()
     {
@@ -19,35 +21,41 @@ public class PauseMenu : MonoBehaviour
         if ( Input.GetKeyDown(KeyCode.Escape) )
         {
             if (isPaused)
-                ResumeGame();
+                StartCoroutine(ResumeGame());
             else
                 PauseGame();
         }
     }
 
-    public void ResumeGame()
+    IEnumerator ResumeGame()
     {
+        while (timer > 0)
+        {
+            Debug.Log(timer.ToString());
+            yield return new WaitForSecondsRealtime(1);
+            timer--;
+        }
         isPaused = false;
         menu.SetActive(false);
         Time.timeScale = 1.0f;
     }
 
-    public void PauseGame()
+    void PauseGame()
     {
         isPaused = true;
         menu.SetActive(true);
         Time.timeScale = 0.0f;
     }
 
-    public void retryGame()
+    void retryGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        ResumeGame();
+        StartCoroutine(ResumeGame());
     }
 
-    public void quitGame()
+    void quitGame()
     {
         SceneManager.LoadScene("MainMenu");
-        ResumeGame();
+        StartCoroutine(ResumeGame());
     }
 }
