@@ -12,6 +12,7 @@ public class BallMovement : MonoBehaviour
     private Rigidbody2D paddle;
     private float maxRotation = 50f;
     private Vector3 paddleScale;
+    [SerializeField] public GameObject particles;
     Vector2 direction;
     void Start()
     {
@@ -72,7 +73,14 @@ public class BallMovement : MonoBehaviour
                         ScoreManager.instance.updateScore(brick);
                     }
                     tilemap.SetTile(brickPosition, null);
-                    float dotProduct = Vector2.Dot(contact.normal, Vector2.right);
+                    if (activeScene.name != "MainMenu")
+                    {
+                        particles.transform.localScale = new Vector3(particles.transform.localScale.x, particles.transform.localScale.y, 1);
+                        hitPosition.z = 1;
+                        Instantiate(particles, hitPosition, Quaternion.identity);
+                        //particles.gameObject.SetActive(true);
+                    }
+                     float dotProduct = Vector2.Dot(contact.normal, Vector2.right);
                     if (dotProduct > 0f)
                         direction.x = Mathf.Abs(direction.x);
                     else if (dotProduct < 0f)
