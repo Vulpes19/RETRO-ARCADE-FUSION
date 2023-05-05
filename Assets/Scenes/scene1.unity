@@ -963,7 +963,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 932018169}
   serializedVersion: 8
-  lengthInSec: 2
+  lengthInSec: 1
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -5729,12 +5729,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 932018169}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 5.7, y: -0.71, z: 134.0146}
+  m_LocalPosition: {x: 12.059771, y: 6.0298853, z: 283.54132}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_Father: {fileID: 1351261404}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &1159753962
 GameObject:
@@ -6180,7 +6180,8 @@ Transform:
   m_LocalPosition: {x: 0, y: -3.56, z: 0}
   m_LocalScale: {x: 0.4726458, y: 0.4726458, z: 0.4726458}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 932018172}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6197,7 +6198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6
-  particles: {fileID: 932018169}
+  particles: {fileID: 932018171}
 --- !u!58 &1351261406
 CircleCollider2D:
   m_ObjectHideFlags: 0
