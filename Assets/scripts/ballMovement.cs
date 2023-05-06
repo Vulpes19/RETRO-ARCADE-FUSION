@@ -6,27 +6,26 @@ using UnityEngine.SceneManagement;
 
 public class BallMovement : MonoBehaviour
 {
-    public float speed = 4f;
+    public float speed;
     private Rigidbody2D ball;
     private GameObject paddleObject;
     private Rigidbody2D paddle;
+    public bool isPaddleSizeChanged;
     private float maxRotation = 50f;
-    private Vector3 paddleScale;
-    [SerializeField] public ParticleSystem particles;
+    private Vector3 paddleOriginalScale;
+    //[SerializeField] public ParticleSystem particles;
     Vector2 direction;
     void Start()
     {
         ball = GetComponent<Rigidbody2D>();
+        isPaddleSizeChanged = false;
         float angle = Random.Range(-maxRotation, maxRotation);
         if (angle >= -30f && angle <= 30f)
             angle = (angle < 0) ? -35f : 35f;
         direction = Quaternion.Euler(0, 0, angle) * Vector2.right;
         paddleObject = GameObject.FindGameObjectWithTag("paddle");
-        if (paddleObject)
-        {
-            paddle = paddleObject.GetComponent<Rigidbody2D>();
-            paddleScale = paddle.transform.localScale;
-        }
+        paddle = paddleObject.gameObject.GetComponent<Rigidbody2D>();
+        paddleOriginalScale = paddle.transform.localScale;
             //direction = Vector2.one.normalized;
     }
 
@@ -37,6 +36,7 @@ public class BallMovement : MonoBehaviour
 
     private void handleScore( Vector3 hitPosition, string brick = "one" )
     {
+        Debug.Log("Im in handleScore");
         if (hitPosition.y >= 2 && hitPosition.y < 3)
             brick = "three";
         else if (hitPosition.y >= 3 && hitPosition.y < 4)
@@ -48,10 +48,19 @@ public class BallMovement : MonoBehaviour
             if (paddleObject)
             {
                 paddle = paddleObject.GetComponent<Rigidbody2D>();
-                if (paddle.transform.localScale != paddleScale)
+                if (isPaddleSizeChanged == false)
+                {
                     paddle.transform.localScale = new Vector3(paddle.transform.localScale.x / 2f, paddle.transform.localScale.y, paddle.transform.localScale.z);
+                    isPaddleSizeChanged = true;
+                }
             }
-            speed = 6f;
+            int randomNbr = Random.Range(1, 3);
+            if (randomNbr == 2)
+            {
+                Debug.Log("POWER UP");
+                paddle.transform.localScale = new Vector3(paddle.transform.localScale.x * 2f, paddle.transform.localScale.y, paddle.transform.localScale.z);
+            }
+            speed = 7.5f;
         }
         ScoreManager.instance.updateScore(brick);
     }
@@ -75,13 +84,13 @@ public class BallMovement : MonoBehaviour
                     handleScore(hitPosition);
                 }
                 tilemap.SetTile(brickPosition, null);
-                if (activeScene.name != "MainMenu")
+                /*if (activeScene.name != "MainMenu")
                 {
                     //particles.transform.localScale = new Vector3(particles.transform.localScale.x, particles.transform.localScale.y, 1);
                     //Instantiate(particles, brickWorldPosition, Quaternion.identity);
                     particles.transform.position = brickWorldPosition;
                     particles.Play();
-                }
+                }*/
                 //particles.Stop();
                 float dotProduct = Vector2.Dot(contact.normal, Vector2.right);
                 if (dotProduct > 0f)
