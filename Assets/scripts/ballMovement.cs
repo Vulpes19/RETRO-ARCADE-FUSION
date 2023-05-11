@@ -22,7 +22,10 @@ public class BallMovement : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(FirstStart());
+        //countdown.SetText("");
+        Scene activeScene = SceneManager.GetActiveScene();
+        if ( activeScene.name != "MainMenu")
+            StartCoroutine(FirstStart());
         ball = GetComponent<Rigidbody2D>();
         isPaddleSizeChanged = false;
         float angle = Random.Range(-maxRotation, maxRotation);
@@ -35,15 +38,13 @@ public class BallMovement : MonoBehaviour
             paddle = paddleObject.gameObject.GetComponent<Rigidbody2D>();
             paddleOriginalScale = paddle.transform.localScale;
         }
-        else
-            Debug.Log("cant find paddle gameObject");
     }
 
     private IEnumerator FirstStart()
     {
         Time.timeScale = 0.0f;
         timer = 3;
-        countdown.gameObject.SetActive(true);
+        //countdown.gameObject.SetActive(true);
         while (timer > 0)
         {
             countdown.SetText(timer.ToString());
@@ -60,7 +61,6 @@ public class BallMovement : MonoBehaviour
 
     private void handleScore( Vector3 hitPosition, string brick = "one" )
     {
-        Debug.Log("Im in handleScore");
         if (hitPosition.y >= 2 && hitPosition.y < 3)
             brick = "three";
         else if (hitPosition.y >= 3 && hitPosition.y < 4)
@@ -77,12 +77,6 @@ public class BallMovement : MonoBehaviour
                     paddle.transform.localScale = new Vector3(paddle.transform.localScale.x / 2f, paddle.transform.localScale.y, paddle.transform.localScale.z);
                     isPaddleSizeChanged = true;
                 }
-            }
-            int randomNbr = Random.Range(1, 4);
-            if (randomNbr == 2)
-            {
-                Debug.Log("POWER UP");
-                paddle.transform.localScale = new Vector3(paddle.transform.localScale.x * 2f, paddle.transform.localScale.y, paddle.transform.localScale.z);
             }
             speed = 7.5f;
         }

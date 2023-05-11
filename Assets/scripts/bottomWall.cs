@@ -15,6 +15,7 @@ public class bottomWall : MonoBehaviour
     {
         if ( collision.gameObject.CompareTag("Ball") )
         {
+            Debug.Log("I touched the bottom wall");
             Rigidbody2D ball = collision.gameObject.GetComponent<Rigidbody2D>();
             LivesManager.instance.loseLife();
             ball.velocity = Vector2.zero;

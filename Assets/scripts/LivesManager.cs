@@ -26,7 +26,10 @@ public class LivesManager : MonoBehaviour
     {
         lives -= 1;
         if (lives <= 0)
+        {
+            Debug.Log(lives.ToString());
             SceneManager.LoadScene("GameOver");
+        }
         livesText.SetText("Lives: " + lives.ToString());
     }
 }
