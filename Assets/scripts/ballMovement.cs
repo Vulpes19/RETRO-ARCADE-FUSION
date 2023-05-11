@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class BallMovement : MonoBehaviour
 {
@@ -13,10 +14,15 @@ public class BallMovement : MonoBehaviour
     public bool isPaddleSizeChanged;
     private float maxRotation = 50f;
     private Vector3 paddleOriginalScale;
-    //[SerializeField] public ParticleSystem particles;
+    private IEnumerator coroutine;
+    public TextMeshProUGUI countdown;
     Vector2 direction;
+    private int timer = 3;
+    //[SerializeField] public ParticleSystem particles;
+
     void Start()
     {
+        StartCoroutine(FirstStart());
         ball = GetComponent<Rigidbody2D>();
         isPaddleSizeChanged = false;
         float angle = Random.Range(-maxRotation, maxRotation);
@@ -24,11 +30,29 @@ public class BallMovement : MonoBehaviour
             angle = (angle < 0) ? -35f : 35f;
         direction = Quaternion.Euler(0, 0, angle) * Vector2.right;
         paddleObject = GameObject.FindGameObjectWithTag("paddle");
-        paddle = paddleObject.gameObject.GetComponent<Rigidbody2D>();
-        paddleOriginalScale = paddle.transform.localScale;
-            //direction = Vector2.one.normalized;
+        if (paddleObject)
+        {
+            paddle = paddleObject.gameObject.GetComponent<Rigidbody2D>();
+            paddleOriginalScale = paddle.transform.localScale;
+        }
+        else
+            Debug.Log("cant find paddle gameObject");
     }
 
+    private IEnumerator FirstStart()
+    {
+        Time.timeScale = 0.0f;
+        timer = 3;
+        countdown.gameObject.SetActive(true);
+        while (timer > 0)
+        {
+            countdown.SetText(timer.ToString());
+            yield return new WaitForSecondsRealtime(1);
+            timer--;
+        }
+        countdown.gameObject.SetActive(false);
+        Time.timeScale = 1.0f;
+    }
     private void FixedUpdate()
     {
         ball.velocity = direction * speed;
@@ -54,7 +78,7 @@ public class BallMovement : MonoBehaviour
                     isPaddleSizeChanged = true;
                 }
             }
-            int randomNbr = Random.Range(1, 3);
+            int randomNbr = Random.Range(1, 4);
             if (randomNbr == 2)
             {
                 Debug.Log("POWER UP");

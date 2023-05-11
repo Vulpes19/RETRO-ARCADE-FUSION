@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -44,5 +45,7 @@ public class ScoreManager : MonoBehaviour
             highScoreText.SetText( "High Score: " + highScore.ToString() );
             PlayerPrefs.SetInt("HighScore", highScore);
         }
+        if ( score >= 113)
+            SceneManager.LoadScene("GameOver");
     }
 }
