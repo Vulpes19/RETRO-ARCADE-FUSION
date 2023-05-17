@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class bottomWall : MonoBehaviour
 {
-    //public Vector2 ballStartPosition;
     public GameObject player;
 
     private void Start()
