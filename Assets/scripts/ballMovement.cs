@@ -22,7 +22,7 @@ public class BallMovement : MonoBehaviour
 
     void Start()
     {
-        //countdown.SetText("");
+
         Scene activeScene = SceneManager.GetActiveScene();
         if ( activeScene.name != "MainMenu")
             StartCoroutine(FirstStart());

@@ -45,7 +45,7 @@ public class ScoreManager : MonoBehaviour
             highScoreText.SetText( "High Score: " + highScore.ToString() );
             PlayerPrefs.SetInt("HighScore", highScore);
         }
-        if ( score >= 113)
+        if ( score >= 160)
             SceneManager.LoadScene("GameOver");
     }
 }
