@@ -14,13 +14,11 @@ public class MainMenu : MonoBehaviour
     { }
     public void StartGame()
     {
-        Debug.Log("game is started");
         SceneManager.LoadScene("scene1");
     }
 
     public void LoadSettings()
     {
-        Debug.Log("settings");
         SceneManager.LoadScene("settings");
     }
 
