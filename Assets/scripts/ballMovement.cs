@@ -16,9 +16,9 @@ public class BallMovement : MonoBehaviour
     private Vector3 paddleOriginalScale;
     private IEnumerator coroutine;
     public TextMeshProUGUI countdown;
+    public AudioSource brickDestroyedAudio;
     Vector2 direction;
     private int timer = 3;
-    //[SerializeField] public ParticleSystem particles;
 
     void Start()
     {
@@ -99,6 +99,7 @@ public class BallMovement : MonoBehaviour
                 Scene activeScene = SceneManager.GetActiveScene();
                 if (activeScene.name != "MainMenu")
                 {
+                    brickDestroyedAudio.Play();
                     handleScore(hitPosition);
                 }
                 tilemap.SetTile(brickPosition, null);
