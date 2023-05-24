@@ -55,18 +55,18 @@ public class PauseMenu : MonoBehaviour
         icon3.SetActive(true);
     }
 
-    void PauseGame()
+    public void PauseGame()
     {
         isPaused = true;
         menu.SetActive(true);
         Time.timeScale = 0.0f;
     }
 
-    void    settings()
+    public void    settings()
     {
         SceneManager.LoadScene("settings");
     }
-    void retryGame()
+    public void retryGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         isPaused = false;
@@ -76,7 +76,7 @@ public class PauseMenu : MonoBehaviour
         //StartCoroutine(ResumeGame());
     }
 
-    void quitGame()
+    public void quitGame()
     {
         SceneManager.LoadScene("MainMenu");
         isPaused = false;
