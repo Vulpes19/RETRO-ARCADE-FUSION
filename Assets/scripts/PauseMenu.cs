@@ -12,6 +12,7 @@ public class PauseMenu : MonoBehaviour
     private int timer = 3;
     private IEnumerator coroutine;
     public TextMeshProUGUI countdown;
+    public AudioSource pauseAudio;
 
     void Start()
     {
@@ -57,6 +58,7 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseGame()
     {
+        pauseAudio.Play();
         isPaused = true;
         menu.SetActive(true);
         Time.timeScale = 0.0f;
