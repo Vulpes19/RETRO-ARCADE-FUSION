@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 131053291}
   - component: {fileID: 131053290}
   m_Layer: 0
-  m_Name: button_sound
+  m_Name: ButtonClicked
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3163,3 +3163,4 @@ MonoBehaviour:
   speed: 4
   isPaddleSizeChanged: 0
   countdown: {fileID: 0}
+  brickDestroyedAudio: {fileID: 0}

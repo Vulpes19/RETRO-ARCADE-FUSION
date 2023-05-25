@@ -9,18 +9,9 @@ public class SettingsMenu : MonoBehaviour
     {}
 
     //still work in progress
-    public void ResumeGame()
+    public void ExitSettings()
     {
-        SceneManager.LoadScene("scene1");
-    }
-
-    public void RetryGame()
-    {
-        SceneManager.LoadScene("scene1");
-    }
-    public void ExitGame()
-    {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 
 }
