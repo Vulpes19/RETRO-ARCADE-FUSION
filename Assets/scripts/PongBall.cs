@@ -11,6 +11,10 @@ public class PongBall : MonoBehaviour
     void Start()
     {
         ball = GetComponent<Rigidbody2D>();
+        Vector3 screenCenter = new Vector3(Screen.width / 2f, Screen.height / 2f, 0);
+        Vector3 worldCenter = Camera.main.ScreenToWorldPoint(screenCenter);
+        worldCenter.z = 0;
+        ball.transform.position = worldCenter;
         float angle = Random.Range(-maxRotation, maxRotation);
         if (angle >= -30f && angle <= 30f)
             angle = (angle < 0) ? -35f : 35f;
@@ -23,7 +27,7 @@ public class PongBall : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("rightWall") || collision.gameObject.CompareTag("leftWall"))
+        if (collision.gameObject.CompareTag("rightWall") || collision.gameObject.CompareTag("leftWall") || collision.gameObject.CompareTag("paddle"))
             direction.x *= -1;
         if (collision.gameObject.CompareTag("topWall") || collision.gameObject.CompareTag("bottomWall"))
             direction.y *= -1;
