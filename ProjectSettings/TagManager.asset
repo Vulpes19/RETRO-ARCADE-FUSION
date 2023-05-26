@@ -11,6 +11,9 @@ TagManager:
   - brick
   - Ball
   - bricks
+  - rightWall
+  - leftWall
+  - bottomWall
   layers:
   - Default
   - TransparentFX

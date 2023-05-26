@@ -14,12 +14,12 @@ public class MainMenu : MonoBehaviour
     { }
     public void StartGame()
     {
-        SceneManager.LoadScene("scene1");
+        SceneManager.LoadScene("Breakout");
     }
 
     public void LoadSettings()
     {
-        SceneManager.LoadScene("settings");
+        SceneManager.LoadScene("Settings");
     }
 
     public void ExitGame()
