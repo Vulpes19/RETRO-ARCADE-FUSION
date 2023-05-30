@@ -14,7 +14,7 @@ public class MainMenu : MonoBehaviour
     { }
     public void StartGame()
     {
-        SceneManager.LoadScene("Breakout");
+        SceneManager.LoadScene("GameMenu");
     }
 
     public void LoadSettings()
