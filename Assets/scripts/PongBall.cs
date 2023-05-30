@@ -27,8 +27,10 @@ public class PongBall : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("rightWall") || collision.gameObject.CompareTag("leftWall") || collision.gameObject.CompareTag("paddle"))
-            direction.x *= -1;
+        if (collision.gameObject.CompareTag("rightWall"))
+            PongScoreManager.instance.updateScore("player");
+        if (collision.gameObject.CompareTag("leftWall"))
+            PongScoreManager.instance.updateScore("AI");
         if (collision.gameObject.CompareTag("topWall") || collision.gameObject.CompareTag("bottomWall"))
             direction.y *= -1;
     }
