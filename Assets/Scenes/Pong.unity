@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 6929601}
   m_Layer: 0
   m_Name: AI
-  m_TagString: paddle
+  m_TagString: AI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -203,8 +203,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6929597}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.827, y: 0.031375803, z: 0}
-  m_LocalScale: {x: 0.5571, y: 4, z: 1}
+  m_LocalPosition: {x: 9.882, y: -0.35, z: 0}
+  m_LocalScale: {x: 0.4494458, y: 3.227038, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -414,7 +414,7 @@ GameObject:
   - component: {fileID: 56729320}
   m_Layer: 0
   m_Name: player
-  m_TagString: paddle
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -479,8 +479,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 56729316}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.827, y: 0.031375803, z: 0}
-  m_LocalScale: {x: 0.5571, y: 4, z: 1}
+  m_LocalPosition: {x: -9.8808, y: -0.35, z: 0}
+  m_LocalScale: {x: 0.44944575, y: 3.2270381, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -726,7 +726,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -64, y: 228}
+  m_AnchoredPosition: {x: 31, y: 235}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &66347320
@@ -749,7 +749,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8bd1c4cff5b93a84cab49d4b0cc0e619, type: 2}
   m_sharedMaterial: {fileID: -4562279859832162003, guid: 8bd1c4cff5b93a84cab49d4b0cc0e619, type: 2}
@@ -1344,7 +1344,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 102, y: 227}
+  m_AnchoredPosition: {x: 138, y: 234}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &378858168
@@ -1367,7 +1367,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8bd1c4cff5b93a84cab49d4b0cc0e619, type: 2}
   m_sharedMaterial: {fileID: -4562279859832162003, guid: 8bd1c4cff5b93a84cab49d4b0cc0e619, type: 2}
@@ -1594,7 +1594,7 @@ GameObject:
   - component: {fileID: 483627638}
   m_Layer: 0
   m_Name: wall1
-  m_TagString: rightWall
+  m_TagString: leftWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2006,7 +2006,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 92, y: 226}
+  m_AnchoredPosition: {x: 92, y: 234}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1194620767
@@ -2521,7 +2521,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1543602769}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.01, y: 4.49, z: 0}
+  m_LocalPosition: {x: -0.01, y: 4.56, z: 0}
   m_LocalScale: {x: 21.417698, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2864,7 +2864,7 @@ GameObject:
   - component: {fileID: 2107726479}
   m_Layer: 0
   m_Name: wall2
-  m_TagString: leftWall
+  m_TagString: rightWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
