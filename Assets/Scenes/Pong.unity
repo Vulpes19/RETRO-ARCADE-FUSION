@@ -1545,6 +1545,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxRotation: 50
   speed: 7
+  countdown: {fileID: 177121456}
 --- !u!58 &459829926
 CircleCollider2D:
   m_ObjectHideFlags: 0

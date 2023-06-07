@@ -37,4 +37,12 @@ public class PongScoreManager : MonoBehaviour
         if (playerScore == 10)
             SceneManager.LoadScene("GameOver");
     }
+    public int getPlayerScore()
+    {
+        return (playerScore);
+    }
+    public int getAIScore()
+    {
+        return (AIScore);
+    }
 }

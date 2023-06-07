@@ -25,15 +25,7 @@ public class PongAI : MonoBehaviour
             float randomY = ballObject.transform.position.y + Random.Range(-1, 1);
             paddle.velocity = new Vector2(paddle.velocity.x, randomY - paddle.position.y);
         }
-        else
-        {
-            if (ballObject.transform.position.y > worldCenter.y && ballObject.transform.position.x > worldCenter.x)
-                paddle.velocity = new Vector2(paddle.velocity.x, paddle.velocity.y + 1);
-            if (ballObject.transform.position.y < worldCenter.y && ballObject.transform.position.x > worldCenter.x)
-                paddle.velocity = new Vector2(paddle.velocity.x, paddle.velocity.y - 1);
-        }
     }
     void Update()
-    {
-    }
+    {}
 }

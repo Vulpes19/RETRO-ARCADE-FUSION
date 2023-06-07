@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PongBall : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class PongBall : MonoBehaviour
     private Vector2 direction;
     private GameObject player;
     private GameObject AI;
+    public TextMeshProUGUI countdown;
+    private IEnumerator coroutine;
+    private int timer = 0;
     void Start()
     {
         ball = GetComponent<Rigidbody2D>();
@@ -18,6 +22,7 @@ public class PongBall : MonoBehaviour
         worldCenter = Camera.main.ScreenToWorldPoint(screenCenter);
         worldCenter.z = 0;
         ball.transform.position = worldCenter;
+        StartCoroutine(FirstStart());
         float angle = Random.Range(-maxRotation, maxRotation);
         if (angle >= -30f && angle <= 30f)
             angle = (angle < 0) ? -35f : 35f;
@@ -25,9 +30,24 @@ public class PongBall : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (PongScoreManager.instance.getPlayerScore() == 5 || PongScoreManager.instance.getAIScore() == 5)
+            speed = 9f;
         ball.velocity = direction * speed;
     }
 
+    private IEnumerator FirstStart()
+    {
+        Time.timeScale = 0.0f;
+        timer = 3;
+        while (timer > 0)
+        {
+            countdown.SetText(timer.ToString());
+            yield return new WaitForSecondsRealtime(1);
+            timer--;
+        }
+        countdown.gameObject.SetActive(false);
+        Time.timeScale = 1.0f;
+    }
     private void RespawnBallAndPaddles()
     {
         ball.velocity = Vector2.zero;
