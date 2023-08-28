@@ -16,7 +16,8 @@ public class BallMovement : MonoBehaviour
     private Vector3 paddleOriginalScale;
     private IEnumerator coroutine;
     public TextMeshProUGUI countdown;
-    public AudioSource brickDestroyedAudio;
+    public AudioClip brickDestroyedAudio;
+    //public AudioSource brickDestroyedAudio;
     Vector2 direction;
     private int timer = 3;
 
@@ -40,11 +41,11 @@ public class BallMovement : MonoBehaviour
         }
     }
 
-    private IEnumerator FirstStart()
+    public IEnumerator FirstStart()
     {
         Time.timeScale = 0.0f;
         timer = 3;
-        //countdown.gameObject.SetActive(true);
+        countdown.gameObject.SetActive(true);
         while (timer > 0)
         {
             countdown.SetText(timer.ToString());
@@ -99,18 +100,11 @@ public class BallMovement : MonoBehaviour
                 Scene activeScene = SceneManager.GetActiveScene();
                 if (activeScene.name != "MainMenu")
                 {
-                    brickDestroyedAudio.Play();
+                    AudioManager.instance.playSound(brickDestroyedAudio);
+                    //brickDestroyedAudio.Play();
                     handleScore(hitPosition);
                 }
                 tilemap.SetTile(brickPosition, null);
-                /*if (activeScene.name != "MainMenu")
-                {
-                    //particles.transform.localScale = new Vector3(particles.transform.localScale.x, particles.transform.localScale.y, 1);
-                    //Instantiate(particles, brickWorldPosition, Quaternion.identity);
-                    particles.transform.position = brickWorldPosition;
-                    particles.Play();
-                }*/
-                //particles.Stop();
                 float dotProduct = Vector2.Dot(contact.normal, Vector2.right);
                 if (dotProduct > 0f)
                     direction.x = Mathf.Abs(direction.x);

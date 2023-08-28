@@ -11,7 +11,6 @@ public class ScoreManager : MonoBehaviour
 
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI highScoreText;
-    //public TextMeshProUGUI livesText;
 
     int score = 0;
     int highScore = 0;
