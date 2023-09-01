@@ -16,10 +16,6 @@ public class PongPlayer : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
         player.velocity = new Vector2(player.velocity.x, verticalInput * speed);
     }
-    void Update()
-    {
-
-    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

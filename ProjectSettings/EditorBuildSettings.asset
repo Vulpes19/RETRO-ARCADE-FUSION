@@ -17,9 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Pong.unity
     guid: f98a3d611574285418ae0ba34350ae54
-  - enabled: 1
-    path: Assets/Scenes/Settings.unity
-    guid: 47961a7f09c0a7b45ab7de5a60e43891
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 0cb6e4a9d427f764487c038309bd0115

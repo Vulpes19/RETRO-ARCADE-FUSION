@@ -54,8 +54,8 @@ public class PongBall : MonoBehaviour
         ball.transform.position = worldCenter;
         player = GameObject.FindGameObjectWithTag("Player");
         AI = GameObject.FindGameObjectWithTag("AI");
-        player.transform.position = new Vector2(-9.8808f, -0.39f);
-        AI.transform.position = new Vector2(9.882f, -0.39f);
+        player.transform.position = new Vector2(-8.66f, -0.35f);
+        AI.transform.position = new Vector2(8.67f, -0.35f);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

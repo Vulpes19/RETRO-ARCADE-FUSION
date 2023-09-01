@@ -86,12 +86,10 @@ public class BallMovement : MonoBehaviour
     private void destroyBricks( Tilemap tilemap, Collision2D collision )
     {
         Vector3 hitPosition = Vector3.zero;
-        Vector3 particlesPos = Vector3.zero;
         foreach (ContactPoint2D contact in collision.contacts)
         {
             hitPosition.x = contact.point.x - 0.01f * contact.normal.x;
             hitPosition.y = contact.point.y - 0.01f * contact.normal.y;
-            particlesPos = contact.point;
             Vector3Int brickPosition = tilemap.WorldToCell(hitPosition);
             Vector3 brickWorldPosition = tilemap.CellToWorld(brickPosition);
             if (tilemap.HasTile(brickPosition))
@@ -101,7 +99,6 @@ public class BallMovement : MonoBehaviour
                 if (activeScene.name != "MainMenu")
                 {
                     AudioManager.instance.playSound(brickDestroyedAudio);
-                    //brickDestroyedAudio.Play();
                     handleScore(hitPosition);
                 }
                 tilemap.SetTile(brickPosition, null);
