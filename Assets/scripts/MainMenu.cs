@@ -18,4 +18,9 @@ public class MainMenu : MonoBehaviour
         AudioManager.instance.playSound(clip);
         Application.Quit();
     }
+
+    public void GetGithubLink()
+    {
+        Application.OpenURL("https://github.com/Vulpes19");
+    }
 }
