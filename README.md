@@ -1,17 +1,17 @@
 # RETRO-ARCADE FUSION
 
-![Game Screenshot](screenshot1)
+![Game Screenshot](screenshot1.PNG)
 ## Overview
 
 RETRO-ARCADE FUSION is a game project I developed as part of my learning journey with Unity game engine. It features two classic arcade game modes: Breakout and Pong. This project allowed me to gain valuable experience in game development, from designing gameplay mechanics to implementing game physics and user interfaces.
 
 ## Features
 - Two classical game modes:
-  ![Screenshot](screenshot2)
+  ![Screenshot](screenshot2.PNG)
   - **Breakout**: Smashing bricks is satisfyingin this classic arcade game.
-  ![Breakout](screenshotBreakout)
+  ![Breakout](screenshotBreakout.PNG)
   - **Pong**: Test your reflexes in the iconic Pong game.
-  ![Pong](screenshotPong)
+  ![Pong](screenshotPong.PNG)
 - Intuitive controls:
   - Easy to learn controls ensure players can jump right into the action.
 - High Score Tracking.
