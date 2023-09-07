@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(Input.touchCount);
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
